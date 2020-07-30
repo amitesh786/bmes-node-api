@@ -24,10 +24,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       categoryStatus: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM,
+        values: ['active', 'inactive'],
+        defaultValue: 'active'
       },
       isDeleted: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,
