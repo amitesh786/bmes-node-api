@@ -1,19 +1,34 @@
+// 'use strict';
+// const {
+//     Model
+// } = require('sequelize');
+// module.exports = (sequelize, DataTypes) => {
+//     class ProductCategory extends Model {
+//         static associate(models) {
+//         // define association here
+//         }
+//     };
+//     ProductCategory.init({
+//         productId: DataTypes.INTEGER,
+//         categoryId: DataTypes.INTEGER
+//     }, {
+//         sequelize,
+//         modelName: 'ProductCategory',
+//     });
+//     return ProductCategory;
+// };
+
 'use strict';
-const {
-    Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class ProductCategory extends Model {
-        static associate(models) {
-        // define association here
-        }
-    };
-    ProductCategory.init({
+
+    const ProductCategory = sequelize.define('ProductCategory', {
         productId: DataTypes.INTEGER,
         categoryId: DataTypes.INTEGER
-    }, {
-        sequelize,
-        modelName: 'ProductCategory',
-    });
+    }, {});
+
+    ProductCategory.associate = function(models) {
+        // associations can be defined here
+    };
+
     return ProductCategory;
 };
