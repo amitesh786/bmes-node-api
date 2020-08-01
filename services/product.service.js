@@ -15,7 +15,7 @@ var productModel = product(db.sequelize, db.Sequelize.DataTypes);
 var productBrandModel = productBrand(db.sequelize, db.Sequelize.DataTypes);
 var productCategoryModel = productCategory(db.sequelize, db.Sequelize.DataTypes);
 
-//Defining the associations for the models
+// Defining the associations for the models
 brandModel.associate({ Product: productModel, ProductBrand: productBrandModel });
 categoryModel.associate({ Product: productModel, ProductCategory: productCategoryModel });
 productModel.associate({
@@ -25,7 +25,7 @@ productModel.associate({
     ProductCategory: productCategoryModel
 });
 
-/* Fetch Products */
+// Fetch Products
 var fetchProducts = function (req) {
     var selectedCategory = req.params.category_slug;
     var selectedBrand = req.params.brand_slug;
@@ -78,7 +78,7 @@ var fetchProducts = function (req) {
     return pageObject;
 };
 
-/* Create Product */
+// Create Product
 var createProduct = function (req) {
     let product = productModel.create({
         name: req.body.name,
@@ -98,7 +98,7 @@ var createProduct = function (req) {
     return product;
 };
 
-/* Edit Product */
+// Edit Product
 var editProduct = function (req) {
     let result = productModel.update({
         name: req.body.name,
@@ -121,13 +121,13 @@ var editProduct = function (req) {
     return result;
 };
 
-/* Get Product */
+// Get Product
 var getProduct = function (req) {
     let product = productModel.findByPk(req.params.id);
     return product;
 };
 
-/* Delete Product */
+// Delete Product
 var deleteProduct = function (req) {
     let result = productModel.update({ isDeleted: true },
     {
@@ -136,7 +136,7 @@ var deleteProduct = function (req) {
     return result;
 };
 
-/* Exports all methods */
+// Exports all methods
 module.exports = {
     fetchProducts: fetchProducts,
     createProduct: createProduct,
